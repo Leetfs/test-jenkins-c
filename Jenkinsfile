@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Archive') {
             steps {
-                archiveArtifacts artifacts: 'hello.exe', onlyIfSuccessful: true
+                archiveArtifacts artifacts: 'build/hello.exe', onlyIfSuccessful: true
             }
         }
     }
