@@ -9,7 +9,10 @@ pipeline {
         stage('Cross-compile') {
             steps {
                 sh '''
-                    x86_64-w64-mingw32-gcc -o hello.exe hello.c
+                    mkdir -p build
+                    cd build
+                    cmake -DCMAKE_TOOLCHAIN_FILE=../toolchain.cmake ../
+                    make
 
                     if [ -f hello.exe ]; then
                         echo "Compilation successful"
