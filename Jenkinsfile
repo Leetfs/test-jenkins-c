@@ -1,6 +1,13 @@
 pipeline {
     agent any
     stages {
+        stage('Clean Workspace') {
+            steps {
+                script {
+                    deleteDir()  // 清空当前工作区
+                }
+            }
+        }
         stage('Checkout') {
             steps {
                 git branch: 'main', url:'https://github.com/Leetfs/test-jenkins-c'
